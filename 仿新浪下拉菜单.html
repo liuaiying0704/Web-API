@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .tn-person-r .tn-title {
+        float: left;
+        font-size: 14px;
+        position: relative;
+        margin-left: 20px;
+        width: 80px;
+      }
+
+      .tn-person-r .tn-title .tn-tab {
+        border: 1px solid #fcfcfc;
+        border-width: 0 1px;
+        color: #4c4c4c;
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        z-index: 9999;
+        padding: 0 2px 0 0;
+        text-decoration: none;
+        width: 76px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+      }
+
+      .tn-person-r .tn-arrow {
+        display: inline-block;
+        width: 8px;
+        height: 5px;
+        margin: 0 0 0 5px;
+        overflow: hidden;
+        vertical-align: middle;
+        font-size: 12px;
+        line-height: 13px;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -o-transform: none;
+        background: url(icon.png) 0 -977px no-repeat;
+      }
+
+      .tn-person-r .tn-new {
+        margin-top: -10px;
+        position: absolute;
+        background: url(icon.png) 0 -1017px;
+        width: 14px;
+        height: 11px;
+      }
+
+      .tn-person-r .tn-topmenulist-a-weibo,
+      .tn-topmenulist-a-other {
+        width: 77px;
+      }
+
+      .tn-person-r .tn-topmenulist-a {
+        border: 1px solid #ebbe7a;
+        border-top: 0;
+        overflow: hidden;
+        -moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+        top: 41px;
+        left: 0;
+      }
+
+      .tn-person-r .tn-topmenulist .tn-text-list {
+        border-bottom: 1px solid #fecc5b;
+        margin: 0 0 -2px;
+        width: 80px;
+      }
+
+      .tn-person-r .tn-topmenulist .tn-text-list li {
+        width: 50px;
+        line-height: 31px;
+        border-bottom: 1px solid #fecc5b;
+        color: #333;
+        padding: 0 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="top-nav">
+      <div class="tn-bg">
+        <div class="tn-header">
+          <div class="tn-person-r">
+            <div class="tn-title" id="SI_Top_Weibo">
+              <a href="javascript:;" class="tn-tab" id="weibo">
+                <i
+                  >微博<em class="tn-new" style="display: none"></em>
+                  <span class="tn-arrow"> </span>
+                </i>
+              </a>
+              <div
+                style="display: none"
+                class="tn-topmenulist tn-topmenulist-a tn-topmenulist-a-weibo"
+                id="weibo_list"
+              >
+                <ul class="tn-text-list">
+                  <li>私信</li>
+                  <li>评论</li>
+                  <li>@我</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // 鼠标经过微博
+      // 1.微博背景颜色  #ccc 字体颜色 #ff8400 2.微博下拉列表展示
+      // 鼠标离开微博
+      // 1.微博背景颜色  去掉 字体颜色 #4c4c4c 2.微博下拉列表收起
+
+      // 下拉列表 鼠标进入 字体颜色  #ff8400 背景颜色 #fff5da
+      //         鼠标离开 字体颜色  #4c4c4c 背景颜色 ''
+
+      //   一、鼠标经过，显示ul事件
+      var tn_title = document.querySelector(".tn-title");
+      var weibo = document.querySelector("#weibo");
+      var list = document.querySelector("#weibo_list");
+      tn_title.onmouseover = function () {
+        list.style.display = "block"; //#ccc 字体颜色 #ff8400
+        weibo.style.color = "#ff8400";
+        weibo.style.background = "#ccc";
+        // console.log("11");
+      };
+      weibo.onmouseout = function () {
+        list.style.display = "none";
+        weibo.style.color = "#4c4c4c";
+        weibo.style.background = "";
+        // console.log("11");
+      };
+      //   二、鼠标经过ul的每一个li的样式
+      var lis = document.querySelectorAll("li");
+      console.log(lis);
+      for (var i = 0; i < lis.length; i++) {
+        lis[i].onmouseover = function () {
+          //   for (var i = 0; i < lis.length; i++) {
+          //     lis[i].style.background = "";
+          //   }
+          this.style.background = "#fff5da";
+          this.style.color = "#ff8400";
+        };
+        lis[i].onmouseout = function () {
+          this.style.background = "";
+          this.style.color = "#4c4c4c";
+        };
+      }
+    </script>
+  </body>
+</html>
