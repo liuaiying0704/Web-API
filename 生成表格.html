@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        width: 600px;
+        cursor: pointer;
+      }
+
+      table td {
+        text-align: center;
+      }
+
+      table th {
+        background-color: rgba(24, 50, 245, 0.8);
+        color: #fff;
+      }
+
+      table tr {
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dv">
+    请输入姓名:
+    <input type="text" value="" id="uname"/>
+    <br/> 请输入邮箱:
+    <input type="text" value="" id="email"/>
+  </div>
+
+  <input type="button" value="添加" id="btn" />
+  <table border="1" cellpadding="0" cellspacing="0" id="tb">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>邮箱</th>
+      </tr>
+    </thead>
+    <tbody id="tbd">
+      <tr>
+        <td>迪丽热巴</td>
+        <td>xiaohei@126.com</td>
+      </tr>
+      <tr>
+        <td>易烊千玺</td>
+        <td>yiyangqianxi@520.com</td>
+      </tr>
+    </tbody>
+<script>
+    // 点击按钮添加到表格的一行
+    var tbn=document.querySelector('#btn')
+    var tbody=document.querySelector('tbody')
+    var uname=document.querySelector('#uname')
+    var email=document.querySelector('#email')
+
+    tbn.onclick=function(){
+        // 优化2，如果输入为空，不进行下面的代码
+        if (uname.value.trim()==''||email.value.trim()=='') {
+            uname.value=''
+            email.value=''
+            return alert('please enter')//return不进行后续操作
+            
+        }
+        var tr=document.createElement('tr')
+       tbody.appendChild(tr)
+      // 创建两个td
+       var td=document.createElement('td')
+       tr.appendChild(td)      
+       td.innerHTML=uname.value
+       var td=document.createElement('td')
+       tr.appendChild(td)
+       td.innerHTML=email.value
+      // 优化1   点击之后，清除input输入框内容 
+       uname.value=''
+       email.value=''
+
+    };
+    
+</script>
+</body>
+</html>
