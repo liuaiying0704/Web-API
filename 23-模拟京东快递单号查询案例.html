@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .search {
+        position: relative;
+        width: 178px;
+        margin: 100px;
+      }
+
+      .con {
+        display: none;
+        position: absolute;
+        top: -40px;
+        width: 171px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        padding: 5px 0;
+        font-size: 18px;
+        line-height: 20px;
+        color: #333;
+      }
+
+      .con::before {
+        content: '';
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 28px;
+        left: 18px;
+        border: 8px solid #000;
+        border-style: solid dashed dashed;
+        border-color: #fff transparent transparent;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="search">
+      <div class="con"></div>
+      <input type="text" placeholder="请输入您的快递单号" class="jd" />
+    </div>
+    <script>
+      // 实现效果：快递单号输入内容时， 上面的大号字体盒子（con）显示(这里面的字号更大）
+      // 表单检测用户输入，给表单添加键盘事件
+      // 同时把快递单号里面的值（value）获取过来赋值给 con盒子（innerText）做为内容
+      // 如果快递单号里面内容为空，则隐藏大号字体盒子(con)盒子
+      var jd = document.querySelector('.jd');
+      var con = document.querySelector('.con');
+      //   注意事件源是document
+      document.addEventListener('keyup', function (e) {
+        if (e.keyCode == 83) {
+          jd.focus();
+        }
+      });
+
+      jd.addEventListener('keyup', function (e) {
+        // 1、优化点，当input为空，隐藏con
+        if (this.value.trim() == '') {
+          return (con.style.display = 'none');
+        }
+        // 2、
+        con.style.display = 'block';
+        con.innerHTML = this.value;
+      });
+      // 3、失去焦点，隐藏con
+      jd.addEventListener('blur', function () {
+        con.style.display = 'none';
+      });
+      // 4、获得焦点，判断input有值con展示出来
+      jd.addEventListener('focus', function () {
+        if (this.value.trim().length > 0) {
+          con.style.display = 'block';
+        }
+      });
+      //   jd.onfocus = function () {
+      // console.log(111);
+      //   };
+      //   jd.onblur = function () {
+      //     console.log(222);
+      //   };ss
+      //   con.addEventListener('focus', function () {
+      //     console.log(444);
+      //   });
+      //   jd.focus();
+      // 注意点：keydown和keypress在文本框里的特点：他们两个事件触发的时候，文字还没有落入文本框
+    </script>
+  </body>
+</html>
