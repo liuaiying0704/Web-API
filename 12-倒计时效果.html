@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 200px;
+        }
+        
+        span {
+            display: inline-block;
+            width: 80px;
+            height: 40px;
+            background-color: #333;
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
+        i{
+            width: 200px;
+            height: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div> -->
+    <div></div>
+    <i></i>
+    <script>
+        
+       
+        // 倒计时每隔1秒 显示数据
+        // 1. 获取元素 
+        // 2022-5-7 18:00:00
+        // var hour=document.querySelector('.hour')
+        // var minute=document.querySelector('.minute')
+        // var second=document.querySelector('.second')
+        // var inputTime=+new Date('2022-5-7 18:00:00')
+
+        // function countDown() {
+        //     var time = +new Date();
+        //     var times = (inputTime - time) / 1000; 
+        //     var h = parseInt(times / 60 / 60);
+        //     h = h < 10 ? '0' + h : h;
+        //     hour.innerHTML = h; 
+
+        //     var m = parseInt(times / 60 % 60); // 分
+        //     m = m < 10 ? '0' + m : m;
+        //     minute.innerHTML = m;
+
+        //     var s = parseInt(times % 60); // 当前的秒
+        //     s = s < 10 ? '0' + s : s;
+        //     second.innerHTML = s;
+        // }
+        // countDown()
+        // // setInterval(function(){
+        // //     countDown()
+        // // },1000)
+        // setInterval(countDown,1000)
+
+
+    // 倒计时，加上年月日    方法1
+    // var div = document.querySelector('div');
+    // var stop = setInterval(function () {
+    //   var time = new Date();
+    //   var date = new Date().toLocaleString();
+    //   console.log(date);
+    //   var arr = [
+    //     '星期日',
+    //     '星期一',
+    //     '星期二',
+    //     '星期三',
+    //     '星期四',
+    //     '星期五',
+    //     '星期六',
+    //   ];
+    //   var day = time.getDay();
+    //   div.innerHTML = date
+    //     .replace('/', '年', 1)
+    //     .replace('/', '月', 2)
+    //     .replace(' ', `日${arr[day]}`);
+    // }, 1000);
+
+    // =================================================
+    // 倒计时，加上年月日    方法2
+       
+ 
+    function getTime(){
+            var date = new Date();
+            var year=date.getFullYear()
+            var months=date.getMonth()+1;
+            var dates=date.getDate();
+            var day=date.getDay();
+            var arr=['星期日','星期一','星期二','星期三','星期四','星期五','星期六']
+            var h=date.getHours()
+            h=h<10?'0'+h:h
+            var m=date.getMinutes()
+            m=m<10?'0'+m:m
+            var s=date.getSeconds()
+            s=s<10?'0'+s:s
+            i.innerHTML=`${year}年${months}月${dates}日${arr[day]}${h}:${m}:${s}`
+
+        }
+    //隔1秒调用一次函数
+    var i=document.querySelector('i')
+    getTime()
+   setInterval(getTime,1000)
+    </script>
+</body>
+
+</html
