@@ -90,5 +90,8 @@ window.addEventListener('load', function () {
   });
   goBack.addEventListener('click', function () {
     window.scroll(0, 0);
+// 让滚动和缓
+//     css   html{ scroll-behavior:smooth }
+    
   });
 });
