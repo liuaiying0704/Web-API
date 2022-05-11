@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .bg {
+        background-color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="one two"></div>
+    <button>开关灯</button>
+    <script>
+      // classList 返回元素的类名
+      //与className的区别，设置成新的类名；classList 增删类名
+      // 1. 添加类名  是在后面追加类名不会覆盖以前的类名 注意前面不需要加.ie10
+      var div = document.querySelector('div');
+      var button = document.querySelector('button');
+      div.classList.add('current');
+      // 2. 删除类名
+      div.classList.remove('one'); //div的类名：two current
+      // 3. 切换类
+      //  1\原来没有就加
+      div.classList.toggle('one'); //div的类名: one two current
+      div.classList.toggle('two'); //div的类名: one current
+      // 2\
+      button.addEventListener('click', function () {
+        //点击按钮可切换，加\删 body类名：bg
+        document.body.classList.toggle('bg');
+      });
+    </script>
+  </body>
+</html>
