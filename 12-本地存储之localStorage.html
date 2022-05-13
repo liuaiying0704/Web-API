@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="text" />
+    <button class="set">存储数据</button>
+    <button class="get">获取数据</button>
+    <button class="remove">删除数据</button>
+    <button class="del">清空所有数据</button>
+    <script>
+      // localStorage
+      // 声明周期永久生效，除非手动删除 否则关闭页面也会存在
+      // 可以多窗口（页面）共享（同一浏览器可以共享）
+      // 以键值对的形式存储使用
+
+      // 设置：localStorage.setItem(key, value)
+      // 取值：localStorage.getItem(key)
+      // 删除：localStorage.removeItem(key)
+      // 清除：localStorage.clear()
+      var ipt = document.querySelector('input');
+      var set = document.querySelector('.set');
+      var get = document.querySelector('.get');
+      var remove = document.querySelector('.remove');
+      var del = document.querySelector('.del');
+
+      set.addEventListener('click', function (e) {
+        localStorage.setItem('ipt', ipt.value);
+      });
+      // 取值：sessionStorage.getItem(key)   //取得都是字符串，用的时候在转换
+      get.addEventListener('click', function (e) {
+        localStorage.getItem('ipt');
+        console.log(localStorage.getItem('ipt'));
+      });
+      // 删除：sessionStorage.removeItem(key)
+      remove.addEventListener('click', function (e) {
+        localStorage.removeItem('ipt');
+      });
+      // 清除：sessionStorage.clear()
+      del.addEventListener('click', function (e) {
+        localStorage.clear();
+      });
+
+      // 补充
+      // JSON 是 JS 对象的字符串表示法，它使用文本表示一个 JS 对象的信息，本质是一个字符串
+      // JSON.parse('json字符串'); => 转换成 对象或者数组
+      // JSON.stringify(对象或者数组); => 转换成 json字符串
+      var str = JSON.stringify({ uname: 'andy', age: 18 }); //转JSON字符串,    JSON.stringify(对象或者数组)
+      console.log(str); //{"uname":"andy","age":18}
+      localStorage.setItem('info', str);
+      var str1 = localStorage.getItem('info');
+      //str1={"uname":"andy","age":18}
+      console.log(JSON.parse(str1));
+      console.log(JSON.parse(str1).age);
+      // 存进去的格式：{"uname":"andy","age":18}。使用JSON.stringify把{ uname: 'andy', age: 18 }转为{"uname":"andy","age":18}
+      //出来的格式是：{"uname":"andy","age":18}。使用JSON.parse再转为对象：{ uname: 'andy', age: 18 }
+    </script>
+  </body>
+</html>
